@@ -14,4 +14,4 @@ const returnArray = () => {
 
 const [ numbers, letters ] = returnArray();
 
-console.log(numbers, letters.toLowerCase());
+console.log(numbers, letters.toLowerCase()); 
