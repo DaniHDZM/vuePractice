@@ -1,3 +1,4 @@
+/* 
 console.log('Inicio');
 
 new Promise( ( resolve, reject ) => {
@@ -15,4 +16,28 @@ new Promise( ( resolve, reject ) => {
 .catch( errorMessage => console.log(errorMessage))
 .finally(() => console.log('Fin de la promesa'))
 
-console.log('Fin');
+console.log('Fin'); 
+*/
+
+import { getHeroById } from "./07-imp-exp";
+import type { Hero } from "../data/heroes";
+
+const getHeroByIdAsync = (id:number): Promise<Hero> => {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+
+            const hero = getHeroById(id);
+            
+            if (hero) {
+                resolve(hero)
+            } else {
+                reject('Heroe no encontrado')
+            }
+
+        }, 1500);
+    })
+}
+
+getHeroByIdAsync(3)
+    .then( hero => console.log('El nombre es', hero.name))
+    .catch( error => console.log(error))
